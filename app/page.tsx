@@ -1,8 +1,21 @@
-import { Button } from "@/components/ui/button";
+import BgGradient from "@/components/common/bg-gradient";
+import HeroSection from "@/components/Home/Hero";
+import DemoSection from "@/components/Home/Demo";
+import Works from "@/components/Home/Works";
+import { PricingSection } from "@/components/Home/PricingSection";
+import { Footer } from "@/components/Home/Footer";
+import Cta_section from "@/components/Home/Cta_section";
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <Button>Home</Button>
+    <div className="relative w-full bg-linear-to-r from-amber-100 via-rose-50 to-amber-100">
+      {/* <BgGradient /> */}
+      <div className="flex flex-col">
+        <HeroSection />
+        <Works />
+        <PricingSection />
+        <Footer />
+        <Cta_section />
+      </div>
     </div>
   );
 }
