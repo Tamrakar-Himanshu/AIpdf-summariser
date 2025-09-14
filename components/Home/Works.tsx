@@ -31,7 +31,7 @@ const steps: Step[] = [
   },
 ];
 export default function Works() {
-  return (  
+  return (
     <>
       <div className="py12 lg:py-24 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 lg:pt-12">
         <div className="text-center mb-16">
@@ -44,8 +44,7 @@ export default function Works() {
         </div>{" "}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto relative">
           {steps.map((step, idx) => (
-            <div key={idx}
-             className="relative flex items-stretch">
+            <div key={idx} className="relative flex items-stretch">
               <StepItem key={idx} {...step} />
 
               {idx < steps.length - 1 && (
@@ -76,7 +75,7 @@ function StepItem({ icon, label, description }: Step) {
         </div>
         <div className="flex flex-col flex-1 gap-1 justify-between"></div>
         <h4 className="text-center font-bold text-xl">{label}</h4>
-        <p className="text-center text-gray-600 text-sm">{description}</p>
+        <p className="text-center text-gray-600 text-xs ">{description}</p>
       </div>
     </>
   );

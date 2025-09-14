@@ -5,7 +5,7 @@ import { Badge } from "../ui/badge";
 import Link from "next/link";
 
 const HeroSection = () => {
-  return (  
+  return (
     <>
       <section className="relative mx-auto flex flex-col z-0 items-center justify-center py-16 sm:py-20 lg:pb-20 transition-all animate-in lg:px-12 max-w-7xl">
         <div className="flex">
@@ -15,7 +15,9 @@ const HeroSection = () => {
               className="relative text-base px-6 py-2 font-medium bg-white rounded-full  transition-colors duration-200"
             >
               <Sparkles className="h-6 w-6 mr-2 text-rose-600 animate-pulse" />
-              <p className="text-base text-rose-600 hover:scale-120 transition-all duration-600">Powered By HiXu</p>
+              <p className="text-sm  font-bold text-rose-600 hover:scale-108 transition-all duration-600">
+                Powered By HiXu
+              </p>
             </Badge>
           </div>
         </div>
@@ -31,20 +33,20 @@ const HeroSection = () => {
           </span>{" "}
           summaries
         </h3>
-        <h4 className="text-lg sm:text-xl lg:text-2xl lg:px-0 text-gray-600 max-w-4xl mx-auto px-4 text-center">
-          Giyu is a powerful tool that helps you quickly extract key information
+        <h4 className="text-lg sm:text-xl  lg:text-md lg:px-0 text-gray-600 max-w-4xl mx-auto px-4 text-center">
+          This is a powerful tool that helps you quickly extract key information
           from your PDF documents.
         </h4>
         <Button
           variant="link"
-          className="group relative overflow-hidden text-white mt-6 lg:w-[12vw] sm:w-auto text-base sm:text-lg md:text-xl lg:text-2xl rounded-full px-8 sm:px-10 lg:px-12 py-6 sm:py-7 lg:py-8 lg:mt-16 shadow-lg hover:shadow-2xl hover:no-underline"
+          className="group relative overflow-hidden text-white mt-6 lg:w-[12vw] sm:w-auto text-base sm:text-lg md:text-xl lg:text-2xl rounded-full px-8 sm:px-10 lg:px-12 py-6 sm:py-7 lg:py-6 lg:mt-16 shadow-lg hover:shadow-xl hover:no-underline"
         >
-          <span className="absolute inset-0 bg-[length:200%_100%] bg-gradient-to-r from-slate-900 to-rose-500  transition-[background-position] duration-[1000ms] group-hover:bg-right z-0 rounded-full" />
+          <span className="absolute inset-0 bg-[length:200%_100%] bg-gradient-to-r from-slate-800 to-rose-600  transition-[background-position] duration-[1000ms] group-hover:bg-right z-0 rounded-full" />
           <Link
             href="/#pricing"
-            className="flex items-center gap-2 relative z-10"
+            className="flex items-center gap-4 relative z-10"
           >
-            Get Started
+            <p className="text-xs"> Get Started</p>
             <ArrowRight className="h-6 w-6 animate-pulse" />
           </Link>
         </Button>

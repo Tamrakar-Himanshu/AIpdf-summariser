@@ -9,12 +9,12 @@ export const ourFileRouter = {
     .middleware(async () => {
       const user = await currentUser();
       if (!user) throw new UploadThingError("UNAUTHORIZED");
-      return { userId: user.id };
+      return { userID: user.id };
     })
     .onUploadComplete(async ({ metadata, file }) => {
       // ⚡ Keep this lightweight
       return {
-        userId: metadata.userId,
+        userID: metadata.userID,
         file: {
           url: file.ufsUrl, // ✅ correct property
           key: file.key, // ✅ also useful if you want to delete later

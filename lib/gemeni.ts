@@ -28,7 +28,7 @@ export const generateSummaryFromGemeni = async (pdfText: string) => {
     let summaries: string[] = [];
 
     for (const chunk of chunks) {
-      const prompt = `${SUMMARY_SYS_PROMPT}\n\nTransform this document into an engaging, easy-to-read summary with contextually relevant emojis and proper markdown formatting:\n\n${chunk}`;
+      const prompt = `${SUMMARY_SYS_PROMPT}\n\nTransform this document into an engaging, easy-to-read summary with contextually relevant emojis and proper markdown formatting and write atleast  50 words in each section:\n\n${chunk}`;
 
       const result = await model.generateContent(prompt);
 
@@ -41,14 +41,22 @@ export const generateSummaryFromGemeni = async (pdfText: string) => {
     }
 
     if (summaries.length === 0) {
-      console.warn("⚠️ Gemini returned an empty response. Falling back to raw text.");
-      return `### ⚠️ Gemini returned no summary\n\nHere is the raw extracted text:\n\n${pdfText.slice(0, 3000)}...`;
+      console.warn(
+        "⚠️ Gemini returned an empty response. Falling back to raw text."
+      );
+      return `### ⚠️ Gemini returned no summary\n\nHere is the raw extracted text:\n\n${pdfText.slice(
+        0,
+        3000
+      )}...`;
     }
 
     // 🔹 Join multiple chunk summaries into one
     return summaries.join("\n\n---\n\n");
   } catch (error: any) {
     console.error("Gemini API Error:", error);
-    return `### ❌ Error generating summary\n\nFalling back to raw text:\n\n${pdfText.slice(0, 3000)}...`;
+    return `### ❌ Error generating summary\n\nFalling back to raw text:\n\n${pdfText.slice(
+      0,
+      3000
+    )}...`;
   }
 };

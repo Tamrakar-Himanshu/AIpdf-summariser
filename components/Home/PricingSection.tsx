@@ -18,12 +18,7 @@ function PricingCard({
   paymentLink,
   expandedContent, // Destructure the new prop
 }: PricingCardProps) {
-  const [isExpanded, setIsExpanded] = useState(false);
   const [isHovering, setIsHovering] = useState(false); // Keep for button animation
-
-  const toggleExpand = () => {
-    setIsExpanded(!isExpanded);
-  };
 
   const handleMouseEnter = () => setIsHovering(true);
   const handleMouseLeave = () => setIsHovering(false);
@@ -48,11 +43,8 @@ function PricingCard({
     <div
       className={cn(
         "border-2 p-6 rounded-lg shadow-lg hover:shadow-2xl transition-all duration-500 flex flex-col justify-between", // Added flex properties
-        "border-rose-500", // Default border color
-        isExpanded ? "md:scale-105 shadow-xl border-rose-700" : "" // Visual cue when expanded
+        "border-rose-500" // Default border color
       )}
-      onClick={toggleExpand} // Click anywhere on the card to toggle
-      style={{ cursor: "pointer" }} // Indicate interactivity
     >
       <div>
         <h3 className="text-xl font-bold mb-2">{name}</h3>
@@ -72,8 +64,7 @@ function PricingCard({
         {/* Expanded Content Section */}
         <div
           className={cn(
-            "overflow-hidden transition-all duration-500 ease-in-out",
-            isExpanded ? "max-h-96 opacity-100 mt-4" : "max-h-0 opacity-0" // Controls expand/collapse
+            "overflow-hidden transition-all duration-500 ease-in-out"
           )}
         >
           {expandedContent && expandedContent.length > 0 && (
@@ -109,13 +100,7 @@ function PricingCard({
           </div>
         </Link>
         {/* Toggle Indicator */}
-        <div className="flex justify-center mt-4">
-          {isExpanded ? (
-            <ChevronUp className="w-6 h-6 text-gray-500 transition-transform duration-300" />
-          ) : (
-            <ChevronDown className="w-6 h-6 text-gray-500 transition-transform duration-300" />
-          )}
-        </div>
+        <div className="flex justify-center mt-4"></div>
       </div>
     </div>
   );
@@ -124,7 +109,10 @@ function PricingCard({
 export const PricingSection = () => {
   return (
     <section className="py-12 lg:py-24">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 lg:pt-12">
+      <div
+        className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 lg:pt-12 "
+        id={"pricing"}
+      >
         <div className="text-center mb-12">
           <h2 className="text-4xl font-extrabold text-gray-900">
             Flexible Pricing for Every Need

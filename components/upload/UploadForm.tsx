@@ -16,8 +16,12 @@ import confetti from "canvas-confetti";
 import { Canvas, useFrame, extend } from "@react-three/fiber";
 import { Float, OrbitControls, Stars, shaderMaterial } from "@react-three/drei";
 import { EffectComposer, Bloom, Glitch } from "@react-three/postprocessing";
-import { generatePdfSummary } from "@/actions/generatePdfSummary";
+import {
+  generatePdfSummary,
+  storePdfSummary,
+} from "@/actions/generatePdfSummary";
 import { generateSummaryFromGemeni } from "@/lib/gemeni";
+import { useRouter } from "next/navigation";
 
 /* =========================================
    Validation
@@ -313,6 +317,7 @@ const UploadForm = () => {
   const [status, setStatus] = useState<Status>("idle");
   const inputRef = useRef<HTMLInputElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
+  const router = useRouter();
 
   const { startUpload } = useUploadThing("pdfUploader");
 
@@ -352,46 +357,90 @@ const UploadForm = () => {
     }
 
     setStatus("uploading");
-    const uploadPromise = startUpload([selectedFile]);
 
-    toast.promise(uploadPromise, {
-      loading: "⏳ Uploading...",
-      success: "🎉 Uploaded successfully!",
-      error: "❌ Upload failed",
-    });
+    try {
+      const uploadPromise = startUpload([selectedFile]);
 
-    const res = await uploadPromise;
+      toast.promise(uploadPromise, {
+        loading: "⏳ Uploading...",
+        success: "🎉 File uploaded successfully!",
+        error: "❌ Upload failed",
+      });
 
-    if (!res) {
+      const res = await uploadPromise;
+
+      if (!res || res.length === 0) {
+        setStatus("error");
+        toast.error("No files were uploaded");
+        return;
+      }
+
+      // Generate PDF summary
+      console.log("Starting PDF summary generation...");
+      const result = await generatePdfSummary(res);
+      console.log("PDF summary result:", result);
+
+      if (!result.success || !result.data) {
+        setStatus("error");
+        toast.error(result.message || "Failed to generate summary");
+        return;
+      }
+
+      if (result.data.summary) {
+        // Store summary in database using the correct function
+        console.log("Storing summary in database...");
+        const storeRes = await storePdfSummary({
+          userID: result.data.userID,
+          fileUrl: result.data.fileUrl,
+          summary: result.data.summary,
+          title: result.data.title,
+          fileName: result.data.fileName,
+        });
+
+        console.log("Store result:", storeRes);
+
+        if (!storeRes.success) {
+          setStatus("error");
+          toast.error(storeRes.message || "Failed to store summary");
+          return;
+        }
+
+        // Check if data and id exist before proceeding
+        if (!storeRes.data?.id) {
+          setStatus("error");
+          toast.error("Failed to get summary ID from database");
+          return;
+        }
+
+        setStatus("success");
+
+        // neon confetti burst
+        confetti({
+          particleCount: 220,
+          spread: 120,
+          startVelocity: 35,
+          scalar: 0.9,
+          origin: { y: 0.6 },
+          colors: ["#00f0ff", "#ff00ff", "#22ff88", "#facc15", "#ef4444"],
+        });
+
+        toast.success("✅ Summary generated and stored successfully!");
+
+        // auto-clear preview after a moment
+        setTimeout(() => clearFile(), 2200);
+
+        // Navigate to the summary page
+        router.push(`/summaries/${storeRes.data.id}`);
+      }
+    } catch (error) {
+      console.error("Error in handleSubmit:", error);
       setStatus("error");
-      toast.error("No files were uploaded");
-      return;
+      toast.error("An error occurred while processing the PDF");
     }
-
-    setStatus("success");
-    // neon confetti burst
-    confetti({
-      particleCount: 220,
-      spread: 120,
-      startVelocity: 35,
-      scalar: 0.9,
-      origin: { y: 0.6 },
-      colors: ["#00f0ff", "#ff00ff", "#22ff88", "#facc15", "#ef4444"],
-    });
-
-    // auto-clear preview after a moment
-    setTimeout(() => clearFile(), 2200);
-
-    const summary = await generatePdfSummary(res);
-
-    console.log("PDF Summary:", { summary });
-
   };
 
   return (
     <div className="flex flex-col gap-8 w-full max-w-2xl">
-      {/* Top-right Sonner toaster */}
-
       {/* Hero 3D scene */}
       <div className="w-full h-50 rounded-2xl overflow-hidden border border-zinc-800 shadow-xl bg-black">
         <RobotScene status={status} />
@@ -452,7 +501,9 @@ const UploadForm = () => {
           className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold px-6 py-3 rounded-xl shadow-lg hover:opacity-90 transition disabled:opacity-50"
           disabled={!selectedFile || status === "uploading"}
         >
-          {status === "uploading" ? "Uploading..." : "Upload PDF"}
+          {status === "uploading"
+            ? "Processing..."
+            : "Upload & Generate Summary"}
         </button>
       </form>
 

@@ -24,7 +24,7 @@ const header = () => {
           <NavLink href={"/#pricing"}>Pricing</NavLink>
           {
             <SignedIn>
-              <NavLink href={"/#dashboard"}>Your Summaries</NavLink>
+              <NavLink href={"/dashboard"}>Your Summaries</NavLink>
             </SignedIn>
           }
         </div>
