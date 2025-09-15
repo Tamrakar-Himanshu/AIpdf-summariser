@@ -34,7 +34,7 @@ export function NavigationControl({
 
         <div className="flex gap-2">
           {Array.from({ length: totalSections }).map((_, index) => (
-            <Button
+            <button
               key={index}
               onClick={() => onSectionSelect(index)}
               className={cn(

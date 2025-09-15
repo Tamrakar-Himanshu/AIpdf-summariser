@@ -55,7 +55,7 @@ export function SummaryHeader({
           </Link>
         </div>
       </div>
-      <h1 className="mt-4 text-6xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-slate-900 via-pink-700 to-red-900">
+      <h1 className="mt-4 text-4xl sm:text-6xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-slate-900 via-pink-700 to-red-900">
         {formatFileName(title)}
       </h1>
     </div>

@@ -37,11 +37,11 @@ export default async function SummaryPage(props: {
   const readingTime = Math.ceil((word_count || 0) / 200);
 
   return (
-    <div className="relative min-h-screen isolate bg-gradient-to-b from-rose-50/40 to-white">
+    <div className="relative  isolate bg-gradient-to-b from-rose-50/40 to-white height-full pb-16 sm:pb-24 lg:pb-32">
       <BgGradient className="from-rose-400 via-rose-300 to-orange-200" />
 
-      <div className="container mx-auto flex flex-col gap-4">
-        <div className="px-4 sm:px-6 lg:px-8 py-6 sm:py-12 lg:py-24">
+      <div className="sm:container mx-auto flex flex-col gap-4">
+        <div className="px-4 sm:px-6 lg:px-8 py-6 sm:py-12 lg:py-18">
           <div className="flex flex-col">
             <h1>
               <SummaryHeader

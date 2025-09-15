@@ -283,24 +283,24 @@ function CrazyCyberRobot({ status }: { status: Status }) {
 ========================================= */
 function RobotScene({ status }: { status: Status }) {
   return (
-    <Canvas camera={{ position: [-4, 0, 6], fov: 50 }}>
+    <Canvas camera={{ position: [-6, 1, 12], fov: 50 }}>
       <Suspense fallback={null}>
         <CrazyCyberRobot status={status} />
         <Stars
-          radius={80}
-          depth={40}
-          count={1600}
+          radius={90}
+          depth={50}
+          count={10600}
           factor={3.5}
           fade
-          speed={0.8}
+          speed={1.8}
         />
       </Suspense>
 
-      <ambientLight intensity={0.6} />
-      <directionalLight position={[5, 5, 5]} intensity={1.6} />
+      <ambientLight intensity={1} />
+      <directionalLight position={[5, 5, 15]} intensity={0.2} />
 
       <EffectComposer>
-        <Bloom intensity={2} luminanceThreshold={0.2} />
+        <Bloom intensity={1} luminanceThreshold={0.2} />
       </EffectComposer>
 
       <OrbitControls enableZoom={false} enablePan={true} />
@@ -440,103 +440,108 @@ const UploadForm = () => {
   };
 
   return (
-    <div className="flex flex-col gap-8 w-full max-w-2xl">
-      {/* Hero 3D scene */}
-      <div className="w-full h-50 rounded-2xl overflow-hidden border border-zinc-800 shadow-xl bg-black">
-        <RobotScene status={status} />
-      </div>
-
-      {/* Upload zone */}
-      <form
-        onSubmit={handleSubmit}
-        ref={formRef}
-        className="flex flex-col gap-4"
-      >
-        <div
-          onDragOver={(e) => {
-            e.preventDefault();
-            setDragActive(true);
-            setStatus("drag");
-          }}
-          onDragLeave={() => {
-            setDragActive(false);
-            setStatus("idle");
-          }}
-          onDrop={(e) => {
-            e.preventDefault();
-            setDragActive(false);
-            if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-              handleFile(e.dataTransfer.files[0]);
-            }
-          }}
-          onClick={() => inputRef.current?.click()}
-          className={`flex flex-col items-center justify-center gap-2 border-2 border-dashed rounded-2xl p-10 cursor-pointer transition ${
-            dragActive
-              ? "border-cyan-400 bg-cyan-50/60"
-              : "border-zinc-300 bg-zinc-50 hover:bg-zinc-100"
-          }`}
+    <div className="flex flex-col md:flex-row gap-8 w-full max-w-7xl mx-auto">
+      {/* Left: Upload form and file preview */}
+      <div className="flex-1 flex flex-col px-3 gap-6 justify-center">
+        {/* Upload zone */}
+        <form
+          onSubmit={handleSubmit}
+          ref={formRef}
+          className="flex flex-col gap-4"
         >
-          <UploadCloud className="w-10 h-10 text-zinc-500" />
-          <p className="text-zinc-700 text-sm">
-            {selectedFile
-              ? "File ready to upload"
-              : "Drop PDF here or click to browse"}
-          </p>
-          <Input
-            ref={inputRef}
-            type="file"
-            name="file"
-            accept="application/pdf"
-            className="hidden"
-            onChange={(e) => {
-              if (e.target.files && e.target.files[0]) {
-                handleFile(e.target.files[0]);
+          <div
+            onDragOver={(e) => {
+              e.preventDefault();
+              setDragActive(true);
+              setStatus("drag");
+            }}
+            onDragLeave={() => {
+              setDragActive(false);
+              setStatus("idle");
+            }}
+            onDrop={(e) => {
+              e.preventDefault();
+              setDragActive(false);
+              if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+                handleFile(e.dataTransfer.files[0]);
               }
             }}
-          />
-        </div>
-
-        <button
-          type="submit"
-          className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold px-6 py-3 rounded-xl shadow-lg hover:opacity-90 transition disabled:opacity-50"
-          disabled={!selectedFile || status === "uploading"}
-        >
-          {status === "uploading"
-            ? "Processing..."
-            : "Upload & Generate Summary"}
-        </button>
-      </form>
-
-      {/* File preview w/ remove */}
-      <AnimatePresence>
-        {selectedFile && (
-          <motion.div
-            className="flex items-center justify-between bg-zinc-50 p-4 rounded-xl border border-zinc-200"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
+            onClick={() => inputRef.current?.click()}
+            className={`flex flex-col items-center justify-center gap-2 border-2 border-dashed rounded-2xl p-10 cursor-pointer transition ${
+              dragActive
+                ? "border-cyan-400 bg-cyan-50/60"
+                : "border-zinc-300 bg-zinc-50 hover:bg-zinc-100"
+            }`}
           >
-            <div className="flex items-center gap-3">
-              <FileText className="w-6 h-6 text-blue-300" />
-              <div className="flex flex-col">
-                <span className="text-sm font-medium text-zinc-900">
-                  {selectedFile.name}
-                </span>
-                <span className="text-xs text-zinc-500">
-                  {(selectedFile.size / (1024 * 1024)).toFixed(2)} MB
-                </span>
-              </div>
-            </div>
-            <Button
-              type="button"
-              onClick={clearFile}
-              className="p-1 rounded-full bg-violet-300 hover:bg-zinc-200 transition"
+            <UploadCloud className="w-10 h-10 sm:h-40 text-zinc-500" />
+            <p className="text-zinc-700 text-sm">
+              {selectedFile
+                ? "File ready to upload"
+                : "Drop PDF here or click to browse"}
+            </p>
+            <Input
+              ref={inputRef}
+              type="file"
+              name="file"
+              accept="application/pdf"
+              className="hidden"
+              onChange={(e) => {
+                if (e.target.files && e.target.files[0]) {
+                  handleFile(e.target.files[0]);
+                }
+              }}
+            />
+          </div>
+
+          <button
+            type="submit"
+            className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold px-6 py-3 rounded-xl shadow-lg hover:opacity-90 transition disabled:opacity-50"
+            disabled={!selectedFile || status === "uploading"}
+          >
+            {status === "uploading"
+              ? "Processing..."
+              : "Upload & Generate Summary"}
+          </button>
+        </form>
+
+        {/* File preview w/ remove */}
+        <AnimatePresence>
+          {selectedFile && (
+            <motion.div
+              className="flex items-center justify-between bg-zinc-50 p-4 rounded-xl border border-zinc-200"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
             >
-              <X className="w-5 h-5 text-zinc-600" />
-            </Button>
-          </motion.div>
-        )}
-      </AnimatePresence>
+              <div className="flex items-center gap-3">
+                <FileText className="w-6 h-6 text-blue-300" />
+                <div className="flex flex-col">
+                  <span className="text-sm font-medium text-zinc-900">
+                    {selectedFile.name}
+                  </span>
+                  <span className="text-xs text-zinc-500">
+                    {(selectedFile.size / (1024 * 1024)).toFixed(2)} MB
+                  </span>
+                </div>
+              </div>
+              <Button
+                type="button"
+                onClick={clearFile}
+                className="p-1 rounded-full bg-violet-300 hover:bg-zinc-200 transition"
+              >
+                <X className="w-5 h-5 text-zinc-600" />
+              </Button>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+
+      {/* Right: 3D Robot Scene */}
+      <div className="flex-1 flex items-center justify-center min-h-[300px] md:min-h-[400px] min-w-0 ">
+        <div className="w-full h-[300px] md:h-[400px] rounded-2xl overflow-hidden border border-zinc-800 shadow-xl bg-black ">
+          <RobotScene status={status}  />
+        </div>
+      </div>
     </div>
   );
 };

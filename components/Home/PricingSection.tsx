@@ -114,15 +114,15 @@ export const PricingSection = () => {
         id={"pricing"}
       >
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-extrabold text-gray-900">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900">
             Flexible Pricing for Every Need
           </h2>
-          <p className="mt-4 text-lg text-gray-600">
+          <p className="mt-4 px-4 text-sm sm:text-lg text-gray-600">
             Select the perfect plan to boost your productivity. Click on a card
             to see more details!
           </p>
         </div>
-        <div className="relative flex justify-center flex-col lg:flex-row items-center lg:items-stretch gap-8">
+        <div className="relative flex justify-center flex-col lg:flex-row items-center lg:items-stretch gap-4 sm:gap-8">
           {" "}
           {/* Adjusted gap */}
           {plans.map((plan) => (

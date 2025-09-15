@@ -7,8 +7,8 @@ import { parseSection } from "@/utils/summary-helper";
 import ContentSection from "./contentSection";
 
 const SectionTitle = ({ title }: { title: string }) => (
-  <div className=" flex flex-col gap-2 mb-6 sticky top-0 bg-background/80 backdrop-blur-xs pt-2 pb-4 border-b border-rose-50/10 z-10">
-    <h2 className="text-3xl text-lg-4xl gap-2 font-bold text-gray-800 items-center flex justify-center text-center">
+  <div className="flex flex-col gap-2 sticky bottom-[-10] bg-background/95 backdrop-blur-xs text-center pb-4 border-b border-rose-50/10 z-10 ">
+    <h2 className="text-xl sm:text-3xl text-lg-4xl gap-2 font-bold text-gray-800 items-center flex justify-center text-center">
       {title}
     </h2>
   </div>
@@ -27,12 +27,10 @@ export const SummaryViewer = ({ summary }: { summary: string }) => {
   return (
     <Card className=" relative px-2 h-[500px] sm:h-[600px] lg:h-[700px] w-full xl:w-[600px] overflow-hidden bg-linear-to-br from-background via-background/95 to-rose-500/5 backdrop-blur-lg border border-rose-500/10 shadow-2xl rounded-3xl">
       <ProgressBar sections={sections} currentSection={currentSection} />
-      <div className=" h-full overflow-y-auto scrollbar-thin scrollbar-thumb-rounded-md scrollbar-thumb-rose-500/20 scrollbar-track-transparent pt-12 sm:pt-16 sm:pb-24">
+      <div className="h-full overflow-y-auto scrollbar-thin scrollbar-thumb-rounded-md scrollbar-thumb-rose-500/20 scrollbar-track-transparent pt-6 sm:pt-20 sm:pb-24">
         <div className=" px-4 sm:px-6">
           <SectionTitle title={sections[currentSection].title} />
-          <ContentSection
-            points={sections[currentSection].points}
-          />
+          <ContentSection points={sections[currentSection].points} title={""} />
         </div>
       </div>
       <NavigationControl

@@ -17,7 +17,7 @@ export default function SourceInfo({
   createdAt: string;
 }) {
   return (
-    <div className="flex flex-col lg:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
+    <div className="flex flex-col lg:flex-row items-center justify-between gap-4 text-xs sm:text-sm text-muted-foreground">
       <div className="flex items-center justify-center gap-2">
         <FileText className=" h-4 w-4 text-rose-400" />
         <span>Source:{fileName}</span>

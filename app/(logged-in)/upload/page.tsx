@@ -8,7 +8,7 @@ import React from "react";
 
 const page = () => {
   return (
-    <section className="min-h-screen">
+    <section className=" w-full">
       <BgGradient />
       <div className="mx-auto max-w-7xl">
         <div className="flex flex-col items-center justify-center gap-6 text-center">

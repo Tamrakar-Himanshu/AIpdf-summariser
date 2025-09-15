@@ -2,7 +2,7 @@ import React from "react";
 
 export const Footer = () => {
   return (
-    <footer className="bg-gradient-to-r from-blue-700 via-purple-700 to-blue-500 text-white py-8 px-4 mt-16 shadow-2xl pb-16 sm:pb-8">
+    <footer className="bg-gradient-to-r from-blue-700 via-purple-700 to-blue-500 text-white py-8 px-4 shadow-2xl pb-16 sm:pb-8">
       <div className="max-w-7xl mx-auto flex flex-col gap-8 md:flex-row md:items-center md:justify-between md:gap-10">
         {/* Brand */}
         <div className="flex items-center gap-4 mb-4 md:mb-0">

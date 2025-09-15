@@ -7,7 +7,7 @@ import { Footer } from "@/components/Home/Footer";
 import Cta_section from "@/components/Home/Cta_section";
 export default function Home() {
   return (
-    <div className="relative w-full  min-h-screen">
+    <div className="relative w-full ">
       <div className="flex flex-col">
         <HeroSection />
         <Works />

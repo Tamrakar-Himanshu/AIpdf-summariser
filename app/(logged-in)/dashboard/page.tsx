@@ -35,13 +35,13 @@ export default async function DashboardPage() {
             >
               <Link href="/upload" className="flex items-center text-white">
                 <Plus className="h-2 w-2 mx-2 " />
-                Upload a Pdf
+                Upload
               </Link>
             </Button>
           </div>
           <div className=" mb-6">
             <div className="bg-rose-50 border border-rose-200 text-rose-800 px-4 py-6 rounded relative">
-              <p className=" text-sm">
+              <p className="text-xs  sm:text-sm ">
                 You Have Reached The Limit Of {uploadLimit} Uploads On Basic
                 Plan
                 <Link
