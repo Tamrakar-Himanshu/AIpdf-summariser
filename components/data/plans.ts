@@ -14,11 +14,29 @@ export interface Plan {
 // data/plans.ts (You might create a separate file for this)
 export const plans: Plan[] = [
   {
+    name: "Free",
+    price: 0,
+    description: "Free plan with limited features",
+    items: [
+      "50 PDF Summaries Per Month",
+      "Standard Processing Speed",
+      "Email Support",
+    ],
+    id: "basic",
+    priceId: "price_12345",
+    paymentLink: "/dashboard",
+    expandedContent: [
+      "Access to basic analytics dashboard",
+      "Community forum access",
+      "Monthly newsletter with tips",
+    ],
+  },
+  {
     name: "Basic",
     price: 10,
     description: "Basic plan with essential features",
     items: [
-      "5 PDF Summaries Per Month",
+      "50 PDF Summaries Per Month",
       "Standard Processing Speed",
       "Email Support",
     ],

@@ -1,92 +1,207 @@
-import React from "react";
+import React, { ReactNode } from "react";
+import {
+  Sparkles,
+  Twitter,
+  Github,
+  Mail,
+  Phone,  
+  Heart,
+  Zap,
+  Shield,
+  Clock,
+  Star,
+} from "lucide-react";
 
 export const Footer = () => {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer className="bg-gradient-to-r from-blue-700 via-purple-700 to-blue-500 text-white py-8 px-4 shadow-2xl pb-16 sm:pb-8">
-      <div className="max-w-7xl mx-auto flex flex-col gap-8 md:flex-row md:items-center md:justify-between md:gap-10">
-        {/* Brand */}
-        <div className="flex items-center gap-4 mb-4 md:mb-0">
-          <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-            <circle cx="20" cy="20" r="20" fill="#fff" fillOpacity="0.12" />
-            <circle cx="20" cy="20" r="13" fill="#fff" fillOpacity="0.22" />
-            <text
-              x="20"
-              y="27"
-              textAnchor="middle"
-              fontSize="20"
-              fill="#fff"
-              fontWeight="bold"
-            >
-              S
-            </text>
-          </svg>
-          <span className="font-extrabold text-2xl tracking-wider drop-shadow-lg">
-            Sumareise
-          </span>
-        </div>
-        {/* Socials & Support */}
-        <div className="flex flex-col items-start gap-4 w-full md:w-auto">
-          <div className="flex gap-4">
-            <a
-              href="#"
-              aria-label="Twitter"
-              className="hover:text-blue-300 transition"
-            >
-              <svg
-                width="26"
-                height="26"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path d="M22 5.924c-.793.352-1.646.59-2.54.697a4.48 4.48 0 0 0 1.965-2.475 8.94 8.94 0 0 1-2.828 1.08A4.48 4.48 0 0 0 11.07 9.03c0 .352.04.695.116 1.022C7.728 9.89 4.1 8.1 1.67 5.149a4.48 4.48 0 0 0-.606 2.254c0 1.555.792 2.927 2.002 3.733a4.47 4.47 0 0 1-2.03-.561v.057a4.48 4.48 0 0 0 3.6 4.393c-.193.052-.397.08-.607.08-.148 0-.292-.014-.432-.04a4.48 4.48 0 0 0 4.184 3.112A8.98 8.98 0 0 1 2 19.13a12.67 12.67 0 0 0 6.86 2.01c8.23 0 12.74-6.82 12.74-12.74 0-.194-.004-.387-.013-.578A9.1 9.1 0 0 0 24 4.59a8.93 8.93 0 0 1-2.57.705z" />
-              </svg>
-            </a>
-            <a
-              href="#"
-              aria-label="GitHub"
-              className="hover:text-blue-300 transition"
-            >
-              <svg
-                width="26"
-                height="26"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path d="M12 2C6.477 2 2 6.484 2 12.021c0 4.428 2.865 8.184 6.839 9.504.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.004.07 1.532 1.032 1.532 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.025A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.295 2.748-1.025 2.748-1.025.546 1.378.202 2.397.1 2.65.64.7 1.028 1.595 1.028 2.688 0 3.847-2.338 4.695-4.566 4.944.359.309.678.919.678 1.852 0 1.336-.012 2.417-.012 2.747 0 .267.18.577.688.48C19.138 20.2 22 16.447 22 12.021 22 6.484 17.523 2 12 2z" />
-              </svg>
-            </a>
+    <footer className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-gray-900">
+      {/* Background Effects */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-rose-900/20 via-transparent to-transparent"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-violet-900/20 via-transparent to-transparent"></div>
+
+      {/* Floating Elements */}
+      <div className="absolute top-10 right-20 w-32 h-32 bg-gradient-to-r from-rose-500/10 to-pink-500/10 rounded-full blur-2xl animate-pulse"></div>
+      <div className="absolute bottom-10 left-20 w-40 h-40 bg-gradient-to-r from-violet-500/10 to-purple-500/10 rounded-full blur-2xl animate-pulse delay-1000"></div>
+
+      <div className="relative z-10">
+        {/* Main Footer Content */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
+            {/* Brand Section */}
+            <div className="space-y-6">
+              <div className="flex items-center gap-4">
+                <div className="relative">
+                  <div className="w-12 h-12 bg-gradient-to-br from-rose-500 to-violet-600 rounded-2xl flex items-center justify-center shadow-lg shadow-rose-500/25">
+                    <Sparkles className="w-6 h-6 text-white" />
+                  </div>
+                  <div className="absolute -top-1 -right-1 w-4 h-4 bg-emerald-400 rounded-full border-2 border-slate-900 animate-pulse"></div>
+                </div>
+                <div>
+                  <h3 className="text-2xl font-black text-white tracking-wide">
+                    Sumareise
+                  </h3>
+                  <p className="text-sm text-gray-400 font-medium">
+                    AI-Powered Insights
+                  </p>
+                </div>
+              </div>
+
+              <p className="text-gray-300 leading-relaxed max-w-md">
+                Transform your PDFs into actionable insights with cutting-edge
+                AI technology. Fast, secure, and incredibly accurate.
+              </p>
+
+              {/* Trust Badges */}
+              <div className="flex items-center gap-4 text-xs">
+                <div className="flex items-center gap-2 bg-slate-800/50 backdrop-blur-sm rounded-full px-3 py-2 border border-slate-700/50">
+                  <Shield className="w-3 h-3 text-emerald-400" />
+                  <span className="text-gray-300 font-medium">Secure</span>
+                </div>
+                <div className="flex items-center gap-2 bg-slate-800/50 backdrop-blur-sm rounded-full px-3 py-2 border border-slate-700/50">
+                  <Zap className="w-3 h-3 text-yellow-400" />
+                  <span className="text-gray-300 font-medium">Fast</span>
+                </div>
+                <div className="flex items-center gap-2 bg-slate-800/50 backdrop-blur-sm rounded-full px-3 py-2 border border-slate-700/50">
+                  <Star className="w-3 h-3 text-rose-400" />
+                  <span className="text-gray-300 font-medium">Trusted</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Contact Section */}
+            <div className="space-y-6">
+              <h4 className="text-lg font-bold text-white mb-4">
+                Get in Touch
+              </h4>
+
+              <div className="space-y-4">
+                <a
+                  href="mailto:DevHiXu@gmail.com"
+                  className="group flex items-center gap-3 text-gray-300 hover:text-white transition-all duration-300"
+                >
+                  <div className="p-2 bg-slate-800/50 rounded-lg border border-slate-700/50 group-hover:border-rose-500/50 group-hover:bg-rose-500/10 transition-all duration-300">
+                    <Mail className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <span className="text-sm font-medium">Email Support</span>
+                    <p className="text-xs text-gray-400">DevHiXu@gmail.com</p>
+                  </div>
+                </a>
+
+                <a
+                  href="tel:+1234567890"
+                  className="group flex items-center gap-3 text-gray-300 hover:text-white transition-all duration-300"
+                >
+                  <div className="p-2 bg-slate-800/50 rounded-lg border border-slate-700/50 group-hover:border-violet-500/50 group-hover:bg-violet-500/10 transition-all duration-300">
+                    <Phone className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <span className="text-sm font-medium">Phone Support</span>
+                    <p className="text-xs text-gray-400">+1 234 567 890</p>
+                  </div>
+                </a>
+
+                <a
+                  href="#"
+                  className="group flex items-center gap-3 text-gray-300 hover:text-white transition-all duration-300"
+                >
+                  <div className="p-2 bg-slate-800/50 rounded-lg border border-slate-700/50 group-hover:border-emerald-500/50 group-hover:bg-emerald-500/10 transition-all duration-300">
+                    <Clock className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <span className="text-sm font-medium">Help Center</span>
+                    <p className="text-xs text-gray-400">24/7 Support</p>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            {/* Social & Links */}
+            <div className="space-y-6">
+              <h4 className="text-lg font-bold text-white mb-4">
+                Connect With Us
+              </h4>
+
+              <div className="flex gap-4">
+                <a
+                  href="#"
+                  className="group p-3 bg-slate-800/50 backdrop-blur-sm rounded-xl border border-slate-700/50 hover:border-blue-500/50 hover:bg-blue-500/10 transition-all duration-300 hover:scale-105"
+                  aria-label="Twitter"
+                >
+                  <Twitter className="w-5 h-5 text-gray-400 group-hover:text-blue-400 transition-colors duration-300" />
+                </a>
+
+                <a
+                  href="#"
+                  className="group p-3 bg-slate-800/50 backdrop-blur-sm rounded-xl border border-slate-700/50 hover:border-gray-500/50 hover:bg-gray-500/10 transition-all duration-300 hover:scale-105"
+                  aria-label="GitHub"
+                >
+                  <Github className="w-5 h-5 text-gray-400 group-hover:text-white transition-colors duration-300" />
+                </a>
+              </div>
+
+              {/* Quick Stats */}
+              <div className="bg-slate-800/30 backdrop-blur-sm rounded-2xl p-6 border border-slate-700/30">
+                <h5 className="text-sm font-bold text-white mb-4">
+                  Platform Stats
+                </h5>
+                <div className="grid grid-cols-2 gap-4 text-center">
+                  <div>
+                    <div className="text-2xl font-black text-rose-400">
+                      10K+
+                    </div>
+                    <div className="text-xs text-gray-400">
+                      Documents Processed
+                    </div>
+                  </div>
+                  <div>
+                    <div className="text-2xl font-black text-violet-400">
+                      99.9%
+                    </div>
+                    <div className="text-xs text-gray-400">Uptime</div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="text-sm text-blue-100 space-y-1">
-            <div>
-              <span className="font-semibold">Email:</span>{" "}
-              <a
-                href="mailto:sumareise.help@gmail.com"
-                className="np-underline hover:text-blue-200"
-              >
-                DevHiXu@gmail.com
-              </a>
-            </div>
-            <div>
-              <span className="font-semibold">Support:</span>{" "}
-              <a href="#" className="underline hover:text-blue-200">
-                Help Center
-              </a>
-            </div>
-            <div>
-              <span className="font-semibold">Contact:</span>{" "}
-              <a
-                href="tel:+1234567890"
-                className="underline hover:text-blue-200"
-              >
-                +1 234 567 890
-              </a>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="border-t border-slate-700/50 bg-slate-900/50 backdrop-blur-sm">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="flex items-center gap-2 text-sm text-gray-400">
+                <span>
+                  &copy; {currentYear} Sumareise. All rights reserved.
+                </span>
+                <Heart className="w-4 h-4 text-rose-400 animate-pulse" />
+              </div>
+
+              <div className="flex items-center gap-6 text-xs text-gray-400">
+                <a
+                  href="#"
+                  className="hover:text-white transition-colors duration-200"
+                >
+                  Privacy Policy
+                </a>
+                <a
+                  href="#"
+                  className="hover:text-white transition-colors duration-200"
+                >
+                  Terms of Service
+                </a>
+                <a
+                  href="#"
+                  className="hover:text-white transition-colors duration-200"
+                >
+                  Cookie Policy
+                </a>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div className="mt-8 text-center text-xs text-blue-100 tracking-wide">
-        &copy; {new Date().getFullYear()}{" "}
-        <span className="font-semibold">Sumareise</span>. All rights reserved.
       </div>
     </footer>
   );

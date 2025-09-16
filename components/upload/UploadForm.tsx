@@ -290,7 +290,7 @@ function RobotScene({ status }: { status: Status }) {
           radius={90}
           depth={50}
           count={10600}
-          factor={3.5}
+          factor={0.5}
           fade
           speed={1.8}
         />
@@ -303,7 +303,7 @@ function RobotScene({ status }: { status: Status }) {
         <Bloom intensity={1} luminanceThreshold={0.2} />
       </EffectComposer>
 
-      <OrbitControls enableZoom={false} enablePan={true} />
+      <OrbitControls enableZoom={false} enablePan={false} />
     </Canvas>
   );
 }

@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^6.31.1",
+    "@emailjs/browser": "^4.4.1",
     "@google/genai": "^1.15.0",
     "@google/generative-ai": "^0.24.1",
     "@langchain/community": "^0.3.53",
