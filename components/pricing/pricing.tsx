@@ -27,7 +27,7 @@ const ContactForm = () => {
     }));
   };
 
-// Handle form submit - DEBUG VERSION (Admin email only)
+  // Handle form submit - DEBUG VERSION (Admin email only)
   const handleSubmit = async () => {
     if (
       !formData.name ||
@@ -43,7 +43,10 @@ const ContactForm = () => {
     try {
       console.log("Environment variables check:");
       console.log("SERVICE_ID:", process.env.NEXT_PUBLIC_EMAIL_SERVICE_ID);
-      console.log("ADMIN_TEMPLATE_ID:", process.env.NEXT_PUBLIC_EMAIL_ADMIN_TEMPLATE_ID);
+      console.log(
+        "ADMIN_TEMPLATE_ID:",
+        process.env.NEXT_PUBLIC_EMAIL_ADMIN_TEMPLATE_ID
+      );
       console.log("PUBLIC_KEY:", process.env.NEXT_PUBLIC_EMAIL_PUBLIC_KEY);
 
       console.log("Sending admin email with data:", {
@@ -54,7 +57,6 @@ const ContactForm = () => {
         message: formData.message,
       });
 
-      // 1️⃣ Send to Admin (you) - ONLY THIS FOR NOW
       await emailjs.send(
         process.env.NEXT_PUBLIC_EMAIL_SERVICE_ID as string,
         process.env.NEXT_PUBLIC_EMAIL_ADMIN_TEMPLATE_ID as string,
@@ -70,26 +72,6 @@ const ContactForm = () => {
 
       console.log("Admin email sent successfully!");
       alert("✅ Admin email sent successfully!");
-      
-      // COMMENT OUT AUTO-REPLY FOR TESTING
-      /*
-      console.log("Sending auto-reply email with data:", {
-        email: formData.email,
-        name: formData.name,
-      });
-
-      await emailjs.send(
-        process.env.NEXT_PUBLIC_EMAIL_SERVICE_ID as string,
-        process.env.NEXT_PUBLIC_EMAIL_TEMPLATE_ID as string,
-        {
-          email: formData.email,
-          name: formData.name,
-        },
-        process.env.NEXT_PUBLIC_EMAIL_PUBLIC_KEY as string
-      );
-
-      console.log("Auto-reply email sent successfully!");
-      */
 
       setFormData({
         name: "",
@@ -101,14 +83,18 @@ const ContactForm = () => {
     } catch (error) {
       console.error("Email sending failed:", error);
       console.error("Full error object:", JSON.stringify(error, null, 2));
-      alert(`❌ Failed to send message: ${error instanceof Error ? error.message : error}`);
+      alert(
+        `❌ Failed to send message: ${
+          error instanceof Error ? error.message : error
+        }`
+      );
     } finally {
       setIsLoading(false);
     }
   };
 
   return (
-    <div className="max-w-2xl mx-auto p-8 bg-white/60 backdrop-blur-xl shadow-xl rounded-2xl border border-gray-200/50">
+    <div className="max-w-2xl mx-auto p-8 bg-white/60 backdrop-blur-2xl shadow-xl rounded-2xl border border-gray-200/50 mb-0 sm:mb-10">
       <h2 className="text-3xl font-bold text-center mb-6 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
         Contact Us
       </h2>

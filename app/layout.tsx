@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { Source_Sans_3 as FontSans } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/common/header";
-import Footer from "@/components/common/footer";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Toaster } from "sonner";
+import { Footer } from "@/components/common/footer";
 
 const fontSans = FontSans({
   variable: "--font-sans",
@@ -13,8 +13,11 @@ const fontSans = FontSans({
 });
 
 export const metadata: Metadata = {
-  title: "Tomiyoka",
+  title: "AI Pdf Analyser",
   description: "Saas Project ",
+  icons: {
+    icon: "/assets/logo.png", // ✅ Add /assets/ to the path
+  },
 };
 
 export default function RootLayout({

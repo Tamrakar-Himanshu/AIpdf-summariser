@@ -539,7 +539,7 @@ const UploadForm = () => {
       {/* Right: 3D Robot Scene */}
       <div className="flex-1 flex items-center justify-center min-h-[300px] md:min-h-[400px] min-w-0 ">
         <div className="w-full h-[300px] md:h-[400px] rounded-2xl overflow-hidden border border-zinc-800 shadow-xl bg-black ">
-          <RobotScene status={status}  />
+          <RobotScene status={status} />
         </div>
       </div>
     </div>

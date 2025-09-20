@@ -12,6 +12,7 @@ export interface Plan {
 }
 
 // data/plans.ts (You might create a separate file for this)
+// data/plans.ts
 export const plans: Plan[] = [
   {
     name: "Free",
@@ -22,7 +23,7 @@ export const plans: Plan[] = [
       "Standard Processing Speed",
       "Email Support",
     ],
-    id: "basic",
+    id: "free", // ✅ Changed from "basic" to "free"
     priceId: "price_12345",
     paymentLink: "/dashboard",
     expandedContent: [
@@ -40,7 +41,7 @@ export const plans: Plan[] = [
       "Standard Processing Speed",
       "Email Support",
     ],
-    id: "basic",
+    id: "basic", // ✅ Keep this as "basic"
     priceId: "price_12345",
     paymentLink: "https://example.com/checkout/basic",
     expandedContent: [
@@ -58,7 +59,7 @@ export const plans: Plan[] = [
       "Priority Processing",
       "Markdown Export",
     ],
-    id: "pro",
+    id: "pro", // ✅ This is already unique
     priceId: "price_67890",
     paymentLink: "https://example.com/checkout/pro",
     expandedContent: [

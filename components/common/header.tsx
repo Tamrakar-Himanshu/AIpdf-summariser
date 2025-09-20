@@ -26,9 +26,13 @@ const Header = () => {
       {/* Desktop Nav */}
       <div className="hidden lg:flex flex-1 justify-center gap-4 lg:gap-12 items-center text-sm font-extrabold">
         <NavLink href={"/#pricing"}>Pricing</NavLink>
+
+
         <SignedIn>
           <NavLink href={"/dashboard"}>Your Summaries</NavLink>
         </SignedIn>
+        <NavLink href={"/contact-us"}>Contact Us</NavLink>
+
       </div>
 
       {/* Desktop Auth */}

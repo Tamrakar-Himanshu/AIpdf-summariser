@@ -37,13 +37,14 @@ function PricingCard({
   const getCardTheme = () => {
     const themes = {
       free: {
-        gradient: "from-gray-500/20 via-slate-500/20 to-zinc-500/20",
-        border: "border-gray-500/30",
-        glow: "shadow-gray-500/20",
-        icon: <Star className="w-5 h-5 text-gray-400" />,
+        gradient: "from-green-500/20 via-slate-500/20 to-green-500/20",
+        border: "border-green-500/30",
+        glow: "shadow-green-500/20",
+        icon: <Star className="w-5 h-5 text-green-400" />,
         button:
-          "from-gray-600 to-slate-600 hover:from-gray-500 hover:to-slate-500",
+          "from-green-600 to-slate-600 hover:from-green-500 hover:to-green-500",
       },
+      // ... other themes
       basic: {
         gradient: "from-blue-500/20 via-cyan-500/20 to-teal-500/20",
         border: "border-blue-500/30",
@@ -82,8 +83,12 @@ function PricingCard({
         isHovered ? "scale-105 -translate-y-2" : "scale-100 translate-y-0"
       )}
       style={{
+        // ✅ Use separate animation properties instead of shorthand
+        animationName: "slideInUp",
+        animationDuration: "0.8s",
+        animationTimingFunction: "ease-out",
+        animationFillMode: "forwards",
         animationDelay: `${animationDelay}ms`,
-        animation: "slideInUp 0.8s ease-out forwards",
       }}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -374,7 +379,7 @@ export const PricingSection = () => {
                 className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors duration-200 text-sm"
               >
                 <span>or email directly:</span>
-                <span className="font-semibold">support@yourcompany.com</span>
+                <span className="font-semibold">DevHixu@gmail.com</span>
               </a>
             </div>
           </div>

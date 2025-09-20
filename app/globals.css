@@ -169,19 +169,17 @@
   }
 }
 
- .animate-gradient-x {
-  background: linear-gradient(
-    to right,
-    var(--color-chart-1),
-    var(--color-chart-2),
-    var(--color-chart-3),
-    var(--color-chart-4),
-    var(--color-chart-5)
-  );
+.animate-gradient-x {
+  background: linear-gradient(to right,
+      var(--color-chart-1),
+      var(--color-chart-2),
+      var(--color-chart-3),
+      var(--color-chart-4),
+      var(--color-chart-5));
   background-size: 200% 100%;
   animation: gradient-x 3s ease infinite;
-} 
-  
+}
+
 
 
 
@@ -199,3 +197,9 @@
   }
 }
 
+.animate-slideInUp {
+  animation-name: slideInUp;
+  animation-duration: 0.8s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+}
