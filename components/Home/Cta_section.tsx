@@ -5,13 +5,13 @@ import { ArrowRight } from "lucide-react";
 
 const Cta_section = () => {
   return (
-    <section className="bg-gray-50 py-12">
+    <section className="bg-gray-50 dark:bg-slate-800 py-12">
       <div className="py-2 lg:py-24 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl text-gray-900 dark:text-slate-100">
             Ready To Save Hours Of Reading Time?
           </h2>
-          <p className="mx-auto max-w-[500px] text-gray-500 md:text-xl/relaxed xl:text-xl/relaxed dark:text-gray-400">
+          <p className="mx-auto max-w-[500px] text-gray-500 dark:text-gray-400 md:text-xl/relaxed xl:text-xl/relaxed">
             Transform lengthy Docs Into Clear, actionable insights with our
             AI_POWERED Summariser
           </p>
@@ -24,7 +24,7 @@ const Cta_section = () => {
                hover:from-rose-500 hover:to-slate-900 hover:text-white text-white 
                transition-all duration-300 flex justify-center items-center px-6 py-3 rounded-full"
               >
-                <Link href={"#pricing"} className="flex items-center">
+                <Link href={"#pricing"} className="flex items-center text-white no-underline">
                   Get Started
                   <ArrowRight className="ml-2 w-4 h-4 animate-pulse" />
                 </Link>

@@ -5,6 +5,7 @@ import Header from "@/components/common/header";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Toaster } from "sonner";
 import { Footer } from "@/components/common/footer";
+import { ThemeProvider } from "@/components/theme-provider";
 
 const fontSans = FontSans({
   variable: "--font-sans",
@@ -29,14 +30,21 @@ export default function RootLayout({
     <ClerkProvider
       publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}
     >
-      <html lang="en">
+      <html lang="en" suppressHydrationWarning>
         <body className={`${fontSans.variable} font-sans antialiased`}>
-          <div className="relative flex min-h-screen flex-col">
-            <Header />
-            <main className="flex-1">{children}</main>
-            <Footer />
-          </div>
-          <Toaster position="top-right" richColors />
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <div className="relative flex min-h-screen flex-col">
+              <Header />
+              <main className="flex-1">{children}</main>
+              <Footer />
+            </div>
+            <Toaster position="top-right" richColors />
+          </ThemeProvider>
         </body>
       </html>
     </ClerkProvider>

@@ -94,11 +94,11 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto p-8 bg-white/60 backdrop-blur-2xl shadow-xl rounded-2xl border border-gray-200/50 mb-0 sm:mb-10">
-      <h2 className="text-3xl font-bold text-center mb-6 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+    <div className="max-w-2xl mx-auto p-8 bg-white/60 dark:bg-slate-800/60 backdrop-blur-2xl shadow-xl rounded-2xl border border-gray-200/50 dark:border-slate-700/50 mb-0 sm:mb-10">
+      <h2 className="text-3xl font-bold text-center mb-6 bg-gradient-to-r from-purple-600 to-blue-600 dark:from-purple-400 dark:to-blue-400 bg-clip-text text-transparent">
         Contact Us
       </h2>
-      <p className="text-center text-gray-600 mb-8">
+      <p className="text-center text-gray-600 dark:text-gray-300 mb-8">
         Have a question or need help? Send us a message and we'll get back to
         you.
       </p>
@@ -107,7 +107,7 @@ const ContactForm = () => {
         {/* Name + Email */}
         <div className="grid sm:grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
+            <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
               Full Name *
             </label>
             <input
@@ -116,12 +116,12 @@ const ContactForm = () => {
               required
               value={formData.name}
               onChange={handleInputChange}
-              className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition-all duration-300 bg-white/80 shadow-sm"
+              className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-slate-600 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 dark:focus:ring-purple-800 transition-all duration-300 bg-white/80 dark:bg-slate-700/80 shadow-sm text-gray-900 dark:text-gray-100"
               placeholder="John Doe"
             />
           </div>
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
+            <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
               Email Address *
             </label>
             <input
@@ -130,7 +130,7 @@ const ContactForm = () => {
               required
               value={formData.email}
               onChange={handleInputChange}
-              className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition-all duration-300 bg-white/80 shadow-sm"
+              className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-slate-600 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 dark:focus:ring-purple-800 transition-all duration-300 bg-white/80 dark:bg-slate-700/80 shadow-sm text-gray-900 dark:text-gray-100"
               placeholder="john@example.com"
             />
           </div>
@@ -139,7 +139,7 @@ const ContactForm = () => {
         {/* Subject + Priority */}
         <div className="grid sm:grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
+            <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
               Subject *
             </label>
             <input
@@ -148,19 +148,19 @@ const ContactForm = () => {
               required
               value={formData.subject}
               onChange={handleInputChange}
-              className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition-all duration-300 bg-white/80 shadow-sm"
+              className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-slate-600 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 dark:focus:ring-purple-800 transition-all duration-300 bg-white/80 dark:bg-slate-700/80 shadow-sm text-gray-900 dark:text-gray-100"
               placeholder="How can we help?"
             />
           </div>
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
+            <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
               Priority
             </label>
             <select
               name="priority"
               value={formData.priority}
               onChange={handleInputChange}
-              className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition-all duration-300 bg-white/80 shadow-sm"
+              className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-slate-600 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 dark:focus:ring-purple-800 transition-all duration-300 bg-white/80 dark:bg-slate-700/80 shadow-sm text-gray-900 dark:text-gray-100"
             >
               <option value="low">Low Priority</option>
               <option value="medium">Medium Priority</option>
@@ -171,7 +171,7 @@ const ContactForm = () => {
 
         {/* Message */}
         <div>
-          <label className="block text-sm font-semibold text-gray-700 mb-2">
+          <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
             Message *
           </label>
           <textarea
@@ -180,7 +180,7 @@ const ContactForm = () => {
             rows={6}
             value={formData.message}
             onChange={handleInputChange}
-            className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition-all duration-300 bg-white/80 shadow-sm resize-none"
+            className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-slate-600 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 dark:focus:ring-purple-800 transition-all duration-300 bg-white/80 dark:bg-slate-700/80 shadow-sm resize-none text-gray-900 dark:text-gray-100"
             placeholder="Tell us about your question or how we can help..."
           />
         </div>
