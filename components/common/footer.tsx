@@ -134,7 +134,7 @@ export const Footer = () => {
                 </a>
 
                 <a
-                  href="https://github.com/Tamrakar-Himanshu"
+                  href="#"
                   className="group p-3 bg-slate-800/50 backdrop-blur-sm rounded-xl border border-slate-700/50 hover:border-gray-500/50 hover:bg-gray-500/10 transition-all duration-300 hover:scale-105"
                   aria-label="GitHub"
                 >
