@@ -14,8 +14,8 @@ const fontSans = FontSans({
 });
 
 export const metadata: Metadata = {
-  title: "AI Pdf Analyser",
-  description: "Saas Project ",
+  title: "HiXu Pdf",
+  description: "AI Project ",
   icons: {
     icon: "/assets/logo.png", // ✅ Add /assets/ to the path
   },
