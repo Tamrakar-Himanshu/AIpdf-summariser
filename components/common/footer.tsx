@@ -10,6 +10,7 @@ import {
   Shield,
   Clock,
   Star,
+  Linkedin,
 } from "lucide-react";
 
 export const Footer = () => {
@@ -99,7 +100,7 @@ export const Footer = () => {
                   </div>
                   <div>
                     <span className="text-sm font-medium">Phone Support</span>
-                    <p className="text-xs text-gray-400">+1 234 567 890</p>
+                    <p className="text-xs text-gray-400">+91 7987253109</p>
                   </div>
                 </a>
 
@@ -126,19 +127,19 @@ export const Footer = () => {
 
               <div className="flex gap-4">
                 <a
-                  href="#"
+                  href="https://github.com/Tamrakar-Himanshu"
                   className="group p-3 bg-slate-800/50 backdrop-blur-sm rounded-xl border border-slate-700/50 hover:border-blue-500/50 hover:bg-blue-500/10 transition-all duration-300 hover:scale-105"
-                  aria-label="Twitter"
+                  aria-label="LinkedIn"
                 >
-                  <Twitter className="w-5 h-5 text-gray-400 group-hover:text-blue-400 transition-colors duration-300" />
+                  <Github className="w-5 h-5 text-gray-400 group-hover:text-blue-400 transition-colors duration-300" />
                 </a>
 
                 <a
-                  href="#"
+                  href="https://www.linkedin.com/in/himanshu-tamrakar-7a3843226/"
                   className="group p-3 bg-slate-800/50 backdrop-blur-sm rounded-xl border border-slate-700/50 hover:border-gray-500/50 hover:bg-gray-500/10 transition-all duration-300 hover:scale-105"
                   aria-label="GitHub"
                 >
-                  <Github className="w-5 h-5 text-gray-400 group-hover:text-white transition-colors duration-300" />
+                  <Linkedin className="w-5 h-5 text-gray-400 group-hover:text-white transition-colors duration-300" />
                 </a>
               </div>
 
@@ -173,9 +174,7 @@ export const Footer = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
               <div className="flex items-center gap-2 text-sm text-gray-400">
-                <span>
-                  &copy; {currentYear} DevHixu. All rights reserved.
-                </span>
+                <span>&copy; {currentYear} DevHixu. All rights reserved.</span>
                 <Heart className="w-4 h-4 text-rose-400 animate-pulse" />
               </div>
 
