@@ -100,7 +100,7 @@ export const Footer = () => {
                   </div>
                   <div>
                     <span className="text-sm font-medium">Phone Support</span>
-                    <p className="text-xs text-gray-400">+91 7987253109</p>
+                    <p className="text-xs text-gray-400">+91 123456789</p>
                   </div>
                 </a>
 
@@ -127,7 +127,7 @@ export const Footer = () => {
 
               <div className="flex gap-4">
                 <a
-                  href="https://github.com/Tamrakar-Himanshu"
+                  href="#"
                   className="group p-3 bg-slate-800/50 backdrop-blur-sm rounded-xl border border-slate-700/50 hover:border-blue-500/50 hover:bg-blue-500/10 transition-all duration-300 hover:scale-105"
                   aria-label="LinkedIn"
                 >
@@ -135,7 +135,7 @@ export const Footer = () => {
                 </a>
 
                 <a
-                  href="https://www.linkedin.com/in/himanshu-tamrakar-7a3843226/"
+                  href="#"
                   className="group p-3 bg-slate-800/50 backdrop-blur-sm rounded-xl border border-slate-700/50 hover:border-gray-500/50 hover:bg-gray-500/10 transition-all duration-300 hover:scale-105"
                   aria-label="GitHub"
                 >
